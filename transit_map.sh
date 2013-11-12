@@ -14,6 +14,9 @@ psql -U postgres -d "$GTFS_DB" -f /usr/share/postgresql/9.1/contrib/postgis-1.5/
 Load in data with gtfsdb
  
 # Load data
+echo "****"
+echo "Loading $GTFS_DB from $GTFS_URL"
+echo "****"
 gtfsdb-load --database_url postgresql://postgres@localhost/$GTFS_DB --is_geospatial $GTFS_URL
 
 # Alter table so it plays nice with qGIS
