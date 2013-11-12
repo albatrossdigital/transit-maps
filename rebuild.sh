@@ -7,7 +7,6 @@ MAPBOX_PROJECTS=/root/Documents/MapBox/project
 
 # Seattle
 bash transit_map.sh gtfs.seattle.metro http://metro.kingcounty.gov/GTFS/google_transit.zip
-render.sh gtfs_seattle
 
 # SF
 bash transit_map.sh gtfs.sf.bart http://www.bart.gov/dev/schedules/google_transit.zip
@@ -15,11 +14,9 @@ bash transit_map.sh gtfs.sf.caltrain http://www.caltrain.com/Assets/GTFS/caltrai
 bash transit_map.sh gtfs.sf.muni http://archives.sfmta.com/transitdata/google_transit.zip
 bash transit_map.sh gtfs.sf.ferries http://trilliumtransit.com/transit_feeds/sfbay-ferries-ca-us/gtfs.zip
 bash transit_map.sh gtfs.sf.marin http://www.marintransit.org/data/google_transit.zip
-render.sh gtfs_sf
 
 # Corvallis, OR
 bash transit_map.sh gtfs.corvallis.transit ftp://ftp.ci.corvallis.or.us/pw/Transportation/GoogleTransitFeed/Google_Transit.zip
-render.sh gtfs_corvallis
 
 
 # NYC
@@ -31,10 +28,16 @@ bash transit_map.sh gtfs.nyc.bus.manhattan http://www.mta.info/developers/data/n
 bash transit_map.sh gtfs.nyc.bus.queens http://www.mta.info/developers/data/nyct/bus/google_transit_queens.zip
 bash transit_map.sh gtfs.nyc.bus.staten_island ttp://www.mta.info/developers/data/nyct/bus/google_transit_staten_island.zip
 bash transit_map.sh gtfs.nyc.bus.metro_north http://www.mta.info/developers/data/mnr/google_transit.zip
-render.sh gtfs_nyc
 
 # London
 bash transit_map.sh gtfs.london.underground http://www.gtfs-data-exchange.com/agency/london-underground/latest.zip
  
 # Paris
 bash transit_map.sh gtfs.paris.rive_gauche http://www.gtfs-data-exchange.com/agency/paris-rive-gauche/latest.zip
+
+
+# Render everything
+render.sh gtfs_seattle
+render.sh gtfs_sf
+render.sh gtfs_corvallis
+render.sh gtfs_nyc
