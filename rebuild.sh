@@ -33,12 +33,3 @@ bash transit_map.sh gtfs.london.underground http://www.gtfs-data-exchange.com/ag
  
 # Paris
 bash transit_map.sh gtfs.paris.rive_gauche http://www.gtfs-data-exchange.com/agency/paris-rive-gauche/latest.zip
-
-
-# Setup symlinks
-GTFS_TILEMILL=gtfs_sf
-ln -s $TRANSIT_MAPS_BASE/$GTFS_TILEMILL $MAPBOX_PROJECTS/$GTFS_TILEMILL
-GTFS_TILEMILL=gtfs_seattle
-ln -s $TRANSIT_MAPS_BASE/$GTFS_TILEMILL $MAPBOX_PROJECTS/$GTFS_TILEMILL
-GTFS_TILEMILL=gtfs_corvallis
-ln -s $TRANSIT_MAPS_BASE/$GTFS_TILEMILL $MAPBOX_PROJECTS/$GTFS_TILEMILL
