@@ -1,0 +1,102 @@
+{
+  "bounds": [
+    -122.664,
+    47.1724,
+    -121.7494,
+    47.9435
+  ],
+  "center": [
+    -122.1806,
+    47.5992,
+    10
+  ],
+  "format": "png",
+  "interactivity": {
+    "layer": "routes",
+    "template_teaser": "{{{route_desc}}}",
+    "fields": [
+      "route_id",
+      "agency_id",
+      "route_short_name",
+      "route_long_name",
+      "route_desc",
+      "route_url",
+      "id"
+    ],
+    "template_full": "route id: {{{route_id}}}<br/>\nagency: {{{agency_id}}}<br/>\nroute short name: {{{route_short_name}}}<br/>\nroute_desc: {{{route_desc}}}<br/>\n<a href=\"{{{route_url}}}\">See schedule</a><br/>"
+  },
+  "minzoom": 0,
+  "maxzoom": 16,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "style.mss"
+  ],
+  "Layer": [
+    {
+      "geometry": "linestring",
+      "extent": [
+        -122.507835,
+        47.1879845,
+        -121.784698,
+        47.9341774
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "routes",
+        "key_field": "id",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-122.507835,47.1879845,-121.784698,47.9341774",
+        "dbname": "gtfs.sf.bart",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "id": "routes",
+        "project": "bart",
+        "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+      },
+      "id": "routes",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "routes"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        -122.506729,
+        47.1891136,
+        -121.785835,
+        47.9323654
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "stops",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "-122.506729,47.1891136,-121.785835,47.9323654",
+        "dbname": "gtfs.sf.bart",
+        "host": "localhost",
+        "port": "5432",
+        "user": "postgres",
+        "id": "stops",
+        "project": "bart",
+        "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"
+      },
+      "id": "stops",
+      "class": "",
+      "srs-name": "WGS84",
+      "srs": "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs",
+      "advanced": {},
+      "name": "stops"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "_basemap": "albatrossdigital.g7f959el",
+  "description": "",
+  "legend": "<span style='color:#007A2D'>▉</span> King County Metro (KCM) <br />\n<span style='color:#0AF'>▉</span> Sound Transit (ST) <br />\n<span style='color:#DB960F'>▉</span> Ferry (KMD) <br />\n<span style='color:red'>▉</span> Other <br />\n",
+  "attribution": ""
+}

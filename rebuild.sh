@@ -1,9 +1,6 @@
 !#/bin/bash
 # Rebuilds multiple GTFS DBs
 # Note, that downloading these files requires accepting multiple TOS
-# To run:
-#   cd ~/scripts
-#   wget https://gist.github.com/jlyon/6634372/raw/transit_map.sh
  
 # Seattle
 bash transit_map.sh gtfs.seattle.metro http://metro.kingcounty.gov/GTFS/google_transit.zip

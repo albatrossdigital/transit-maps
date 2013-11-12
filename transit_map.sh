@@ -1,6 +1,9 @@
 !#/bin/bash
 # example call:
 # $ bash transit_map.sh gtfs.seattle.metro http://metro.kingcounty.gov/GTFS/google_transit.zip
+
+TRANSIT_MAPS_BASE=/root/scripts/transit_maps
+MAPBOX_PROJECTS=/root/Documents/MapBox/project
  
 GTFS_DB="$1"
 GTFS_URL="$2"
@@ -22,3 +25,5 @@ ALTER TABLE stops ADD COLUMN id SERIAL primary key;
 ALTER TABLE patterns DROP CONSTRAINT patterns_pkey CASCADE;
 ALTER TABLE patterns ADD COLUMN id SERIAL primary key;
 \q
+
+ln -s $TRANSIT_MAPS_BASE/$GTFS_DB $MAPBOX_PROJECTS/$GTFS_DB
