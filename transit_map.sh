@@ -11,7 +11,6 @@ psql -U postgres -c "create database \"$GTFS_DB\";"
 psql -U postgres -d "$GTFS_DB" -c "create language plpgsql;"
 psql -U postgres -d "$GTFS_DB" -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
 psql -U postgres -d "$GTFS_DB" -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql
-Load in data with gtfsdb
  
 # Load data
 echo "****"
