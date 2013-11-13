@@ -9,8 +9,8 @@ GTFS_URL="$2"
 psql -U postgres -c "drop database if exists \"$GTFS_DB\";"
 psql -U postgres -c "create database \"$GTFS_DB\";"
 psql -U postgres -d "$GTFS_DB" -c "create language plpgsql;"
-psql -U postgres -d "$GTFS_DB" -f /usr/share/postgresql/9.1/contrib/postgis-1.5/postgis.sql
-psql -U postgres -d "$GTFS_DB" -f /usr/share/postgresql/9.1/contrib/postgis-1.5/spatial_ref_sys.sql
+psql -U postgres -d "$GTFS_DB" -f /usr/share/postgresql/9.3/contrib/postgis-1.1/postgis.sql
+psql -U postgres -d "$GTFS_DB" -f /usr/share/postgresql/9.3/contrib/postgis-1.1/spatial_ref_sys.sql
  
 # Load data
 echo "****"
