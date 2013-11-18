@@ -6,11 +6,6 @@ GTFS_DB="$1"
 GTFS_URL="$2"
 
 # Setup postGIS db
-#psql -U postgres -c "drop database if exists \"$GTFS_DB\";"
-#psql -U postgres -c "create database \"$GTFS_DB\";"
-#psql -U postgres -d "$GTFS_DB" -c "create language plpgsql;"
-#psql -U postgres -d "$GTFS_DB" -f /usr/share/postgresql/9.3/contrib/postgis-2.1/postgis.sql
-#psql -U postgres -d "$GTFS_DB" -f /usr/share/postgresql/9.3/contrib/postgis-2.1/spatial_ref_sys.sql
 psql -U postgres -c "drop database if exists \"$GTFS_DB\";"
 psql -U postgres -c "create database \"$GTFS_DB\";"
 psql -U postgres -d "$GTFS_DB" -c "CREATE EXTENSION fuzzystrmatch;"
