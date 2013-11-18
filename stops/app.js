@@ -1,39 +1,35 @@
+// Set variables
 var express = require('express');
 var app = express();
-
-// Get variables
 app.set('port', process.env.PORT || 3000);
-
 var pg = require('pg'); 
-var conString;
-
 var moment = require('moment');
 var moment = require('moment-timezone');
+var conString;
 
-//or native libpq bindings
-//var pg = require('pg').native
 
 app.get('/', function(req, res){
 
   var db = req.query.db ? req.query.db : 'gtfs.corvallis.transit';
   var tz = req.query.tz ? req.query.tz : 'America/Los_Angeles';
   var timeformat = req.query.timeformat ? req.query.timeformat: 'fromnow';
-if (db == undefined) {
-  return res.jsonp(500, { error: 'Missing db parameter' });
-}
-conString = "postgres://postgres@localhost:5432/" + db;
-console.log(conString);
 
-if (req.query.time == undefined && req.query.date == undefined) {
-  var datetime = moment().tz(tz);
-}
-else {
-  var day = req.query.date ? req.query.date : moment().format('YYYY-MM-DD');
-  var time = req.query.time ? req.query.time : moment().format('HH:mm:ss');
-  var datetime = moment(day+" "+time, 'YYYY-MM-DD HH:mm:ss'); 
-}
+  // Setup db connection
+  if (db == undefined) {
+    return res.jsonp(500, { error: 'Missing db parameter' });
+  }
+  conString = "postgres://postgres@localhost:5432/" + db;
 
+  if (req.query.time == undefined && req.query.date == undefined) {
+    var datetime = moment().tz(tz);
+  }
+  else {
+    var day = req.query.date ? req.query.date : moment().format('YYYY-MM-DD');
+    var time = req.query.time ? req.query.time : moment().format('HH:mm:ss');
+    var datetime = moment(day+" "+time, 'YYYY-MM-DD HH:mm:ss'); 
+  }
 
+  // Build the query
   var query = "select t.departure_time, trip.trip_headsign, r.route_short_name, r.route_long_name, r.route_color from stops s";
   query += " left join stop_times t on s.stop_id=t.stop_id";
   query += " left join trips trip on t.trip_id=trip.trip_id";
@@ -43,8 +39,8 @@ else {
   query += " and t.arrival_time >= '" + datetime.format('HH:mm:ss') + "'";
   query += " and c." + datetime.format('dddd').toLowerCase() + " = 't'";
   query += " limit 10;";
-    console.log(query);
 
+  // Fech the data, re-write dates and return the result
   fetch(query, function(err, data){
     var date = datetime.format('YYYY-MM-DD');
     for (var i in data.items) {
@@ -52,16 +48,14 @@ else {
     }
     res.jsonp(data);
   });
-  
-
 
 });
 
 
-
-
 app.listen(app.get('port'));
 
+
+// Wraps a call to Postgres
 var fetch = function (query, callback) {
   var client = new pg.Client(conString);
   client.connect(function(err) {
